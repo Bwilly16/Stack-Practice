@@ -4,7 +4,11 @@
 
 using namespace std;
 
+//class for the stack to funciton off of
+
 class Stack {
+
+//private stack variables to allow security
 private:
     vector<int> stack;
     int maxSize;
@@ -16,10 +20,12 @@ public:
         return stack.empty();
     }
 
+    // function to tell me if stack is full. Returns true or false
     bool isFull() const {
         return stack.size() == static_cast<size_t>(maxSize);
     }
 
+    // function to push value onto stack
     void push(int value) {
         if(isFull()){
             cout<<"Stack is Full.\n";
@@ -30,6 +36,7 @@ public:
         }
     }
 
+    // function to pop value off top of stack
     void pop(){
         if(isEmpty()){
             cout << "Stack is Empty!!" << endl;
@@ -41,6 +48,7 @@ public:
         }
     }
 
+    // function to print out stack when requested
     void printOut() const{
         if(isEmpty()){
             cout << "Stack is Empty!" << endl;
@@ -54,11 +62,13 @@ public:
     }
 };
 
+
 int main() {
     int maxSize;
     cout << "How big is the stack?";
     cin >> maxSize;
 
+    // create instance of stack to use
     Stack myStack(maxSize);
 
     int option;
@@ -72,6 +82,7 @@ int main() {
         cout << "Enter what you wanna do: \n";
         cin >> option;
 
+    // switch case function to decipher inputted request
         switch(option) {
             case 0: {
                 cout << "Exiting the program!";
@@ -82,7 +93,7 @@ int main() {
                 cout << "What value do you want to push?: ";
                 cin >> pushval;
                 //if pushval is not a #
-                myStack.push(pushval);
+                myStack.push(pushval); //push value onto stack
                 cout << "Pushed value: " << pushval;
                 break;
             }
@@ -101,6 +112,6 @@ int main() {
                 break;
         }
 
-    }while (option != 0);
+    }while (option != 0); // keep looking for input until 'option' variable is not 0-3
 }
         
