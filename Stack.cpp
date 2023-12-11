@@ -4,6 +4,96 @@
 
 using namespace std;
 
+class Stack {
+    private: 
+        vector<float> stack;
+        int maxSize;
+
+    public:
+        Stack(int size) : maxSize(size) {}
+        
+        bool isEmpty() const {
+            return stack.empty();
+        }
+
+        bool isFull() const {
+            return stack.size() == static_cast<size_t>(maxSize);
+        }
+
+        void push(int value) {
+            if(isFull()){
+                cout << "Stack is Full." << endl;
+            }
+            else{
+           return stack.push_back(value); 
+            }
+        }
+
+        void pop() {
+            if(isEmpty()) {
+            cout << "Stack is Empty." << endl;
+        }
+        else{
+            int topval = stack.back();
+            stack.pop_back();
+            cout << "Value Popped: " << topval << endl;
+            }
+        }
+
+        void display(){
+            for (int i : stack){
+                cout << i << endl;
+            }
+        }
+};
+
+int main() {
+    int maxSize = 0;
+    int option = 0;
+
+    cout << "What is the max stack size?" << endl;
+    cin >> maxSize;
+
+    Stack myStack(maxSize);
+
+    cout << "Stack Options: " << endl;
+    cout << "0: Exit\n1: Push\n2: Pop\n3: Display\n" << endl;
+    cin >> option;
+
+    do {
+        switch(option){
+            case 0: 
+                 cout << "Exiting the program. Goodbye." << endl;
+                 break;
+            
+            case 1: {
+                int inVal;
+                cout << "What value do you want to push?" << endl;
+                cin >> inVal;
+
+                myStack.push(inVal);
+                break;
+            }
+            case 2: 
+                myStack.pop();
+                break;
+            
+            case 3: 
+                cout << "Here are the stack elements: " << endl;
+                myStack.display();
+                break;
+
+            default:
+                cout << "Invalid choice...";
+                break;
+            
+        }
+
+    }while(option !=0);
+
+}
+
+/*
 //class for the stack to funciton off of
 
 class Stack {
@@ -114,4 +204,4 @@ int main() {
 
     }while (option != 0); // keep looking for input until 'option' variable is not 0-3
 }
-        
+        */
